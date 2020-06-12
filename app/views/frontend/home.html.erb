@@ -1,0 +1,156 @@
+<div class="container">
+  <div class="row">
+    <h1 id="big_title">Clock+</h1>
+    <p id="big_subtitle">Clock+ built by <%= "Syed Sabih Ali" %> - <%= "s3528350@student.rmit.edu.au" %> - <%= "Credit" %> - <%= "Group 8 Mon 8:30am - Matt" %></p>
+  </div>
+</div>
+
+<div class="container" style="margin-top:20px;">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="col-sm-12" style="height:12em;"></div>
+      <div class="col-sm-12 left_panel_breakdown_option"><span id="green_rounded_circle" class="rounded_circle" title="Business"></span>Business time</div>
+      <div class="col-sm-12 left_panel_breakdown_option"><span id="yellow_rounded_circle" class="rounded_circle" title="Business overtime"></span>Business overtime</div>
+      <div class="col-sm-12 left_panel_breakdown_option"><span id="red_rounded_circle" class="rounded_circle" title="Personal time"></span>Personal time</div>
+      <div class="col-sm-12 left_panel_breakdown_option"><span id="night_rounded_circle" class="rounded_circle" title="Sleeping time"></span>Sleeping time</div>
+    </div>
+    <div id="display_cities" class="col-sm-6">
+      <div id="display_scroller">
+      
+      </div>
+      <div id="load_cities" class="col-sm-12">
+        <% @initial_time_zone = "Australia/Melbourne" %>
+        <div class="view_city_section">
+          <div class="col-sm-6 view_city_name_section">Melbourne
+             <div class="clear"></div>
+             <%= calculate_offset_difference_in_hours_and_human(@initial_time_zone, @initial_time_zone)%>
+          </div>          
+          <div class="col-sm-6 view_city_time_zone_section">
+             <div id="view_city_current_hour_<%= @initial_time_zone%>" class="col-sm-12 view_city_current_hour" >  
+                <%= calculate_local_time(@initial_time_zone, "24 hours")%>
+             </div>
+             <div class="clear"></div>
+             <div class="col-sm-4"></div>
+             <div class="col-sm-8 view_city_time_mode" style="text-align:center;">
+                <span style="float:left;margin-right:10px;"><%= calculate_date_difference_to_human(@initial_time_zone, @initial_time_zone)%></span>
+                <% @calculate_time_mode = calculate_time_mode(@initial_time_zone)%>
+                <% if @calculate_time_mode == "business" then %>
+                  <span id="green_rounded_circle" class="rounded_circle" title="Business" style=""></span>
+                <% elsif @calculate_time_mode == "business_overtime" then %>  
+                  <span id="yellow_rounded_circle" class="rounded_circle" title="Business overtime"></span>
+                <% elsif @calculate_time_mode == "personal_time" then %> 
+                  <span id="red_rounded_circle" class="rounded_circle" title="Personal time"></span>
+                <% elsif @calculate_time_mode == "sleeping_time" then %> 
+                  <span id="night_rounded_circle" class="rounded_circle" title="Sleeping time"></span>
+                <% end %>
+             </div>
+             <div class="clear"></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+        <% @current_time_zone = "Europe/London" %>
+        <div class="view_city_section">
+          <div class="col-sm-6 view_city_name_section" style="">London
+            <div class="clear"></div>
+            <%= calculate_offset_difference_in_hours_and_human(@current_time_zone, @initial_time_zone)%>
+          </div>
+          
+          <div class="col-sm-6 view_city_time_zone_section">
+             <div id="view_city_current_hour_<%= @current_time_zone%>" class="col-sm-12 view_city_current_hour" >  
+                <%= calculate_local_time(@current_time_zone, "24 hours")%> 
+             </div>
+             <div class="clear"></div>
+             <div class="col-sm-4"></div>
+             <div class="col-sm-8 view_city_time_mode" style="">
+                <span style="float:left;margin-right:10px;"><%= calculate_date_difference_to_human(@initial_time_zone, @current_time_zone)%></span>
+                <% @calculate_time_mode = calculate_time_mode(@current_time_zone)%>
+                <% if @calculate_time_mode == "business" then %>
+                  <span id="green_rounded_circle" class="rounded_circle" title="Business" style=""></span>
+                <% elsif @calculate_time_mode == "business_overtime" then %>  
+                  <span id="yellow_rounded_circle" class="rounded_circle" title="Business overtime"></span>
+                <% elsif @calculate_time_mode == "personal_time" then %> 
+                  <span id="red_rounded_circle" class="rounded_circle" title="Personal time"></span>
+                <% elsif @calculate_time_mode == "sleeping_time" then %> 
+                  <span id="night_rounded_circle" class="rounded_circle" title="Sleeping time"></span>
+                <% end %>
+             </div>
+             <div class="clear"></div>         
+          </div>
+        </div>
+        <div class="clear"></div>
+        <% @current_time_zone = "America/Buenos_Aires" %>
+        <div class="view_city_section">
+          <div class="col-sm-6 view_city_name_section">Buenos Aires
+            <div class="clear"></div>
+             <%= calculate_offset_difference_in_hours_and_human(@current_time_zone, @initial_time_zone)%>
+          </div>
+          
+          <div class="col-sm-6 view_city_time_zone_section">
+             <div id="view_city_current_hour_<%= @current_time_zone%>" class="col-sm-12 view_city_current_hour" >  
+                <%= calculate_local_time(@current_time_zone, "24 hours")%>
+             </div>
+             <div class="clear"></div>
+             <div class="col-sm-4"></div>
+             <div class="col-sm-8 view_city_time_mode" style="">
+                <span style="float:left;margin-right:10px;"><%= calculate_date_difference_to_human(@initial_time_zone, @current_time_zone)%></span>
+                <% @calculate_time_mode = calculate_time_mode(@current_time_zone)%>
+                <% if @calculate_time_mode == "business" then %>
+                  <span id="green_rounded_circle" class="rounded_circle" title="Business" style=""></span>
+                <% elsif @calculate_time_mode == "business_overtime" then %>  
+                  <span id="yellow_rounded_circle" class="rounded_circle" title="Business overtime"></span>
+                <% elsif @calculate_time_mode == "personal_time" then %> 
+                  <span id="red_rounded_circle" class="rounded_circle" title="Personal time"></span>
+                <% elsif @calculate_time_mode == "sleeping_time" then %> 
+                  <span id="night_rounded_circle" class="rounded_circle" title="Sleeping time"></span>
+                <% end %>
+             </div>
+             <div class="clear"></div>    
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      
+    </div>
+    <div class="col-sm-3">
+      <div class="col-sm-12" style="height:12em;"></div>
+      <div id="color_theme_label" class="col-sm-12" style="">Color Theme</div>
+      <div class="col-sm-12">
+        <div class="choose_theme_item choose_theme_item_active">Black</div>
+        <div class="choose_theme_item">Graphite</div>
+        <div class="choose_theme_item">White</div>
+      </div>
+      <div class="col-sm-12" style="margin-top:10px;">
+        <input id="checkbox_24_hours" type="checkbox" checked />&nbsp;<span id="display_24_hour_clock">24-Hour Clock</span>
+      </div>
+    </div>
+  </div>
+</div>
+<%= calculate_offset_difference_in_hours(@initial_time_zone, @current_time_zone) %>
+<script>
+  function update_clock_values(clock_type){
+    $(".view_city_current_hour").each(function(){
+      var time_zone = $(this).attr('id').replace("view_city_current_hour_", "");
+      var authenticity_token = $('meta[name=csrf-token]').attr('content');
+      var object = $(this);      
+      $.post("<%= calculate_local_time_path%>", {authenticity_token: authenticity_token, time_zone: time_zone, clock_type: clock_type}, function(data){
+        object.text(String(data));
+      })      
+    });
+  }
+
+  $("#checkbox_24_hours").change(function(){
+    if($(this).prop("checked") == true){
+      update_clock_values("24 hours");
+      
+    }
+    else if($(this).prop("checked") == false){
+      update_clock_values("12 hours");
+    }
+  });
+</script>
+
+
+
+
+
+
