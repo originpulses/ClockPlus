@@ -1,0 +1,15 @@
+{
+  "values": [ 
+    <% @counter = 1%>
+    <% if @values.size > 0 then %>
+      <% for @value in @values do%>
+        "<%= @value%>"
+      <% if @values.size > @counter then %> 
+        ,
+    <% end %>
+      <% @counter += 1%>
+    <% end %>
+    <% end %>
+  ]
+}
+ 

@@ -1,24 +1,23 @@
-# README
+## Clock+ | RAD2020 24 Hours Final Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Built with Ruby on Rails Framework! 💎
+- Link: https://api.rubyonrails.org/ 🛤
+- Built using Vagrant Environment 📦
 
-Things you may want to cover:
+## Student Information
 
-* Ruby version
+- Student Name: Syed Sabih Ali 
+- Student No: s3528350
 
-* System dependencies
+## Level Attempted
 
-* Configuration
+- Credit Level Complete ✅
+- Distinction Level Attempted 80% Complete ✅
 
-* Database creation
+## Heroku Deployment Information
 
-* Database initialization
+- Heroku URL: 
 
-* How to run the test suite
+- Last Heroku Deployment Log: 
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Copyright© 2020 | Syed Sabih Ali

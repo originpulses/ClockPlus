@@ -14,5 +14,7 @@
 //= require activestorage
 //= require jquery
 //= require bootstrap-sprockets
+//= require bootstrap-editable.min
+//= bootstrap3-typehead
 // require turbolinks
 //= require_tree .

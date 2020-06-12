@@ -31,3 +31,7 @@ body, nav, .navbar-default{background: #1d1a21 !important;}
 .view_city_time_mode{text-align:center;}
 .clear{clear:both;}
 .rounded_circle_right{background:red;border-radius: 50%;float:right;height:1em;width:1em;margin-right:5px;margin-top:3px;}
+#add_cities_button{color:gray;font-size:3em;margin-left:auto;margin-right:auto;font-weight:bold;text-align:center;padding-top:25px;}
+#add_cities_button:hover{cursor: pointer;}
+.remove_city{display:none;height:10px;width:10px;}
+.remove_city:hover{cursor:pointer;}

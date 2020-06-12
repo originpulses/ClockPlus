@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <h1 id="big_title">Clock+</h1>
-    <p id="big_subtitle">Clock+ built by <%= "Syed Sabih Ali" %> - <%= "s3528350@student.rmit.edu.au" %> - <%= "Credit" %> - <%= "Group 8 Mon 8:30am - Matt" %></p>
+    <p id="big_subtitle">Clock+ built by <%= "Syed Sabih Ali" %> - <%= "s3528350@student.rmit.edu.au" %> - <%= "Distinction" %> - <%= "Group 8 Mon 8:30am - Matt" %></p>
   </div>
 </div>
 
@@ -16,22 +16,25 @@
     </div>
     <div id="display_cities" class="col-sm-6">
       <div id="display_scroller">
-      
+         <input id="input_autocomplete_cities" type="text" style="margin-left:auto;margin-right:auto;width:100%;margin-top:20px;padding:10px;background:#2c2a30;border:1px solid gray;color:white;"/>
       </div>
       <div id="load_cities" class="col-sm-12">
         <% @initial_time_zone = "Australia/Melbourne" %>
-        <div class="view_city_section">
+        <div class="view_city_section">          
           <div class="col-sm-6 view_city_name_section">Melbourne
              <div class="clear"></div>
              <%= calculate_offset_difference_in_hours_and_human(@initial_time_zone, @initial_time_zone)%>
           </div>          
           <div class="col-sm-6 view_city_time_zone_section">
-             <div id="view_city_current_hour_<%= @initial_time_zone%>" class="col-sm-12 view_city_current_hour" >  
+             <div id="view_city_current_hour_<%= @initial_time_zone%>" class="col-sm-10 view_city_current_hour" style="">  
                 <%= calculate_local_time(@initial_time_zone, "24 hours")%>
              </div>
+             <div class="col-sm-1 remove_city" style=""> 
+               X
+             </div>
              <div class="clear"></div>
-             <div class="col-sm-4"></div>
-             <div class="col-sm-8 view_city_time_mode" style="text-align:center;">
+             <div class="col-sm-3"></div>
+             <div class="col-sm-9 view_city_time_mode" style="text-align:center;">
                 <span style="float:left;margin-right:10px;"><%= calculate_date_difference_to_human(@initial_time_zone, @initial_time_zone)%></span>
                 <% @calculate_time_mode = calculate_time_mode(@initial_time_zone)%>
                 <% if @calculate_time_mode == "business" then %>
@@ -56,12 +59,15 @@
           </div>
           
           <div class="col-sm-6 view_city_time_zone_section">
-             <div id="view_city_current_hour_<%= @current_time_zone%>" class="col-sm-12 view_city_current_hour" >  
+             <div id="view_city_current_hour_<%= @current_time_zone%>" class="col-sm-10 view_city_current_hour" >  
                 <%= calculate_local_time(@current_time_zone, "24 hours")%> 
              </div>
+              <div class="col-sm-1 remove_city" style=""> 
+               X
+             </div>
              <div class="clear"></div>
-             <div class="col-sm-4"></div>
-             <div class="col-sm-8 view_city_time_mode" style="">
+             <div class="col-sm-3"></div>
+             <div class="col-sm-9 view_city_time_mode" style="">
                 <span style="float:left;margin-right:10px;"><%= calculate_date_difference_to_human(@initial_time_zone, @current_time_zone)%></span>
                 <% @calculate_time_mode = calculate_time_mode(@current_time_zone)%>
                 <% if @calculate_time_mode == "business" then %>
@@ -86,12 +92,15 @@
           </div>
           
           <div class="col-sm-6 view_city_time_zone_section">
-             <div id="view_city_current_hour_<%= @current_time_zone%>" class="col-sm-12 view_city_current_hour" >  
+             <div id="view_city_current_hour_<%= @current_time_zone%>" class="col-sm-10 view_city_current_hour" >  
                 <%= calculate_local_time(@current_time_zone, "24 hours")%>
              </div>
+              <div class="col-sm-1 remove_city" style=""> 
+               X
+             </div>
              <div class="clear"></div>
-             <div class="col-sm-4"></div>
-             <div class="col-sm-8 view_city_time_mode" style="">
+             <div class="col-sm-3"></div>
+             <div class="col-sm-9 view_city_time_mode" style="">
                 <span style="float:left;margin-right:10px;"><%= calculate_date_difference_to_human(@initial_time_zone, @current_time_zone)%></span>
                 <% @calculate_time_mode = calculate_time_mode(@current_time_zone)%>
                 <% if @calculate_time_mode == "business" then %>
@@ -108,16 +117,21 @@
           </div>
         </div>
         <div class="clear"></div>
+        
+         <div class="col-sm-12">
+             <div id="add_cities_button" class="col-sm-12" style="">+</div>
+         </div>   
+        
       </div>
-      
+        
     </div>
     <div class="col-sm-3">
       <div class="col-sm-12" style="height:12em;"></div>
       <div id="color_theme_label" class="col-sm-12" style="">Color Theme</div>
       <div class="col-sm-12">
-        <div class="choose_theme_item choose_theme_item_active">Black</div>
-        <div class="choose_theme_item">Graphite</div>
-        <div class="choose_theme_item">White</div>
+        <div id="choose_theme_black" class="choose_theme_item choose_theme_item_active">Black</div>
+        <div id="choose_theme_graphite" class="choose_theme_item">Graphite</div>
+        <div id="choose_theme_white" class="choose_theme_item">White</div>
       </div>
       <div class="col-sm-12" style="margin-top:10px;">
         <input id="checkbox_24_hours" type="checkbox" checked />&nbsp;<span id="display_24_hour_clock">24-Hour Clock</span>
@@ -125,7 +139,7 @@
     </div>
   </div>
 </div>
-<%= calculate_offset_difference_in_hours(@initial_time_zone, @current_time_zone) %>
+
 <script>
   function update_clock_values(clock_type){
     $(".view_city_current_hour").each(function(){
@@ -147,10 +161,35 @@
       update_clock_values("12 hours");
     }
   });
+  
+  $(".remove_city").click(function(){
+    $(this).parent().parent().hide();
+  });
+   $(document).ready(function() {
+    $(".view_city_section").hover(function(){     
+      $(this).find(".remove_city").show();
+    }, function(){
+      $(this).find(".remove_city").hide();
+    });
+  });
+  $(".choose_theme_item").click(function(){
+    var id = $(this).attr('id').replace("choose_theme_", "");
+//     alert(String(id));
+    console.log("/themes/" + String(id) + ".css");
+    $(".choose_theme_item").removeClass("choose_theme_item_active");
+    $(this).addClass("choose_theme_item_active");
+    $('#theme').attr('href', "/themes/" + String(id) + ".css")
+  });
+  $.get("/search_zone_values/all.json", function(data){
+    $("#input_autocomplete_cities").typeahead({ source:data.values });
+  },'json'); 
+  
+  $("#add_cities_button").click(function(){
+    var value_chosen = $("#input_autocomplete_cities").val();
+    if(value_chosen != ""){
+      //alert(value_chosen);
+    }
+  });
+  
+  
 </script>
-
-
-
-
-
-
